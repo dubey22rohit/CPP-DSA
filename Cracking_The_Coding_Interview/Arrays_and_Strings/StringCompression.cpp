@@ -9,7 +9,7 @@ string CompressString(string str) {
     }
     string out;
     int count = 1;
-    for (size_t i = 1; i < ol; i++) {
+    for (int i = 1; i < str.length(); i++) {
         if (str[i - 1] == str[i]) {
             ++count;
         } else {
