@@ -10,10 +10,7 @@ void printDFS(int **edges, int v, int startV, bool *visited) {
         if (i == startV) {
             continue;
         }
-        if (edges[startV][i] == 1) {
-            if (visited[i]) {
-                continue;
-            }
+        if (edges[startV][i] == 1 && !visited[i]) {
             printDFS(edges, v, i, visited);
         }
     }
@@ -21,21 +18,19 @@ void printDFS(int **edges, int v, int startV, bool *visited) {
 
 // BFS
 void printBFS(int **edges, int v, int sv, bool *visited) {
-    queue<int> pendingV;
-
-    pendingV.push(sv);
+    queue<int> pn;
+    pn.push(sv);
     visited[sv] = true;
-
-    while (!pendingV.empty()) {
-        int currentV = pendingV.front();
-        pendingV.pop();
-        cout << currentV << endl;
-        for (int i = 0; i < v; i++) {
-            if (i == currentV) {
+    while (!pn.empty()) {
+        int curr = pn.front();
+        pn.pop();
+        cout << curr << endl;
+        for (size_t i = 0; i < v; i++) {
+            if (curr == i) {
                 continue;
             }
-            if (edges[currentV][i] == 1 && !visited[i]) {
-                pendingV.push(i);
+            if (egdes[curr][i] == 1 && !visited[i]) {
+                pn.push(i);
                 visited[i] = true;
             }
         }
@@ -97,10 +92,10 @@ int main() {
         edges[s][f] = 1;
     }
 
-    bool *visited = new bool[v];
-    for (int i = 0; i < v; i++) {
-        visited[i] = false;
-    }
+    // bool *visited = new bool[v];
+    // for (int i = 0; i < v; i++) {
+    //     visited[i] = false;
+    // }
 
     cout << "DFS:\n";
     // printDFS(edges, v, 0, visited);

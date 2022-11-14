@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <vector>
 using namespace std;
 
 template <typename T>
@@ -188,6 +189,7 @@ class BST {
         }
         return 1 + Count(root->lchild) + Count(root->rchild);
     }
+    Node<T>* BSTFromPreorder(vector<int>& pre) {}
 };
 
 int main() {
