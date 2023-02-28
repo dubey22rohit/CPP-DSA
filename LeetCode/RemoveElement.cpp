@@ -2,18 +2,15 @@
 #include <vector>
 using namespace std;
 
+// https://leetcode.com/problems/remove-element/description/
+
 int removeElement(vector<int> &nums, int val) {
     int k = 0;
     for (int i = 0; i < nums.size(); i++) {
-        if (nums[i] == val) {
+        if (nums[i] != val) {
+            nums[k] = nums[i];
             k++;
-            for (int j = i; j < nums.size() - 1; j++) {
-                nums[j] = nums[j + 1];
-            }
         }
-    }
-    for (int i = 0; i < k; i++) {
-        cout << nums[i] << ", ";
     }
     return k;
 }
@@ -25,5 +22,6 @@ int main() {
     nums.push_back(2);
     nums.push_back(3);
     int k = removeElement(nums, 3);
+    cout << k;
     return 0;
 }

@@ -2,48 +2,78 @@
 #include <queue>
 using namespace std;
 
-void BFS(int G[][7], int start, int n) {
-    int i = start;
-    queue<int> q;
-    int visited[7] = {0};
-    cout << i << " ";
-    visited[i] = 1;
-    q.emplace(i);
-    while (!q.empty()) {
-        i = q.front();
-        q.pop();
-        for (int j = 0; j < n; j++) {
-            if (G[i][j] == 1 && visited[j] == 0) {
-                cout << j << " ";
-                visited[j] = 1;
-                q.emplace(j);
+void BFSHelper(bool** graph, int v, int sv, bool* visited) {
+    queue<int> pv;
+    pv.emplace(sv);
+    visited[sv] = true;
+    while (!pv.empty()) {
+        int cv = pv.front();
+        cout << cv << " ";
+        pv.pop();
+
+        for (int i = 0; i < v; i++) {
+            if (graph[cv][i] == 1 && !visited[i]) {
+                pv.emplace(i);
+                visited[i] = true;
             }
         }
     }
 }
 
-void DFS(int G[][7], int start, int n) {
-    static int visited[7] = {0};
-    if (visited[start] == 0) {
-        cout << start << " ";
-        visited[start] = 1;
-        for (int j = 1; j < n; ++j) {
-            if (G[start][j] == 1 && visited[j] == 0) {
-                DFS(G, j, n);
-            }
+void BFS(bool** graph, int v) {
+    bool* visited = new bool[v]();
+
+    for (int i = 0; i < v; i++) {
+        if (!visited[i]) {
+            BFSHelper(graph, v, i, visited);
         }
     }
+
+    delete[] visited;
+}
+
+void DFSHelper(bool** graph, int v, int sv, bool* visited) {
+    cout << sv << " ";
+    visited[sv] = true;
+
+    for (int i = 0; i < v; i++) {
+        if (graph[sv][i] == 1 && !visited[i]) {
+            DFSHelper(graph, v, i, visited);
+        }
+    }
+}
+
+void DFS(bool** graph, int v) {
+    bool* visited = new bool[v]();
+
+    for (int i = 0; i < v; i++) {
+        if (!visited[i]) {
+            DFSHelper(graph, v, i, visited);
+        }
+    }
+
+    delete[] visited;
 }
 
 int main() {
-    int G[7][7] = {{0, 0, 0, 0, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 0},
-                   {0, 1, 0, 0, 1, 0, 0}, {0, 1, 0, 0, 1, 0, 0},
-                   {0, 0, 1, 1, 0, 1, 1}, {0, 0, 0, 0, 1, 0, 0},
-                   {0, 0, 0, 0, 1, 0, 0}};
+    int v, e;
+    cin >> v >> e;
+
+    bool** graph = new bool*[v];
+    for (int i = 0; i < v; i++) {
+        graph[i] = new bool[v]();
+    }
+
+    for (int i = 0, a, b; i < e; i++) {
+        cin >> a >> b;
+        graph[a][b] = true;
+        graph[b][a] = true;
+    }
+
+    cout << "DFS:\n";
+    DFS(graph, v);
 
     cout << "\nBFS:\n";
-    BFS(G, 1, 7);
-    cout << "\nDFS:\n";
-    DFS(G, 4, 7);
+    BFS(graph, v);
     return 0;
 }

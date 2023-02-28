@@ -2,89 +2,88 @@
 #include <queue>
 using namespace std;
 
-// DFS
-void printDFS(int **edges, int v, int startV, bool *visited) {
-    cout << startV << endl;
-    visited[startV] = true;
-    for (int i = 0; i < v; i++) {
-        if (i == startV) {
+void printDFS(int **edges, int n, int sv, bool *visited) {
+    cout << sv << " ";
+    visited[sv] = true;
+    for (int i = 0; i < n; i++) {
+        if (i == sv) {
             continue;
         }
-        if (edges[startV][i] == 1 && !visited[i]) {
-            printDFS(edges, v, i, visited);
+        if (edges[sv][i] == 1 && !visited[i]) {
+            printDFS(edges, n, i, visited);
         }
     }
 }
 
-// BFS
-void printBFS(int **edges, int v, int sv, bool *visited) {
-    queue<int> pn;
-    pn.push(sv);
+void printBFS(int **edges, int n, int sv, bool *visited) {
+    queue<int> pv;
+    pv.emplace(sv);
     visited[sv] = true;
-    while (!pn.empty()) {
-        int curr = pn.front();
-        pn.pop();
-        cout << curr << endl;
-        for (size_t i = 0; i < v; i++) {
-            if (curr == i) {
+    while (!pv.empty()) {
+        int cv = pv.front();
+        cout << cv << " ";
+        pv.pop();
+        for (int i = 0; i < n; i++) {
+            if (i == cv) {
                 continue;
             }
-            if (egdes[curr][i] == 1 && !visited[i]) {
-                pn.push(i);
+            if (edges[cv][i] && !visited[i]) {
+                pv.emplace(i);
                 visited[i] = true;
             }
         }
     }
 }
 
-// For disconnected graphs:
-void BFS(int **edges, int v) {
-    bool *visited = new bool[v];
-    for (int i = 0; i < v; i++) {
+void DFS(int **edges, int n) {
+    bool *visited = new bool[n];
+    for (int i = 0; i < n; i++) {
         visited[i] = false;
     }
-    for (int i = 0; i < v; i++) {
+
+    // For un-connected graph, we need to scan all the vertices of the visited
+    // array to make sure that none of it is false.
+    for (int i = 0; i < n; i++) {
         if (!visited[i]) {
-            printBFS(edges, v, i, visited);
+            printDFS(edges, n, i, visited);
         }
     }
     delete[] visited;
 }
 
-void DFS(int **edges, int v) {
-    bool *visited = new bool[v];
-    for (int i = 0; i < v; i++) {
+void BFS(int **edges, int n) {
+    bool *visited = new bool[n];
+    for (int i = 0; i < n; i++) {
         visited[i] = false;
     }
-    for (int i = 0; i < v; i++) {
+
+    // For un-connected graph, we need to scan all the vertices of the visited
+    // array to make sure that none of it is false.
+    for (int i = 0; i < n; i++) {
         if (!visited[i]) {
-            printDFS(edges, v, i, visited);
+            printBFS(edges, n, i, visited);
         }
     }
     delete[] visited;
 }
 
 int main() {
-    int v;
-    int e;
-    cout << "Enter number of vertices: ";
-    cin >> v;
+    int n, e;
+    cin >> n >> e;
 
-    cout << "\n";
-
-    cout << "Enter number of edges: ";
-    cin >> e;
-
-    int **edges = new int *[v];
-    for (int i = 0; i < v; i++) {
-        edges[i] = new int[v];
-        for (int j = 0; j < v; j++) {
+    // Creating a new adjacency matrix to store graph
+    // n is the number of vertices, e is the number oof edges
+    int **edges = new int *[n];
+    for (int i = 0; i < n; i++) {
+        edges[i] = new int[n];
+        for (int j = 0; j < n; j++) {
+            // Initializing the adjacency matrix with 0
             edges[i][j] = 0;
         }
     }
-    cout
-        << "\nEnter first and second vertex, between which there is an edge:\n";
 
+    // Taking vertices bw which there is an edge and assigning 1 to that
+    // location
     for (int i = 0; i < e; i++) {
         int f, s;
         cin >> f >> s;
@@ -92,23 +91,16 @@ int main() {
         edges[s][f] = 1;
     }
 
-    // bool *visited = new bool[v];
-    // for (int i = 0; i < v; i++) {
-    //     visited[i] = false;
-    // }
-
     cout << "DFS:\n";
-    // printDFS(edges, v, 0, visited);
-    DFS(edges, v);
+    DFS(edges, n);
 
     cout << "\nBFS:\n";
-    // printBFS(edges, v, 0);
-    BFS(edges, v);
+    BFS(edges, n);
 
-    for (int i = 0; i < v; i++) {
+    // Delete all memory
+    for (int i = 0; i < n; i++) {
         delete[] edges[i];
     }
     delete[] edges;
-
     return 0;
 }
