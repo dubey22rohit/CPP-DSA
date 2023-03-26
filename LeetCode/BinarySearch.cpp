@@ -7,7 +7,7 @@ int search(vector<int>& nums, int target) {
     while (s <= e) {
         int mid = s + (e - s) / 2;
         if (target < nums[mid]) {
-            e = mid;
+            e = mid - 1;
         } else if (target > nums[mid]) {
             s = mid + 1;
         } else {

@@ -3,42 +3,38 @@
 #include <vector>
 using namespace std;
 
-vector<int> getPathBFSHelper(bool **graph, int v, int sv, int ev,
-                             bool *visited) {
+// Pending: incomplete
+vector<int>* getPathBFSHelper(bool** graph, int v, int sv, int ev,
+                              bool* visited) {
     queue<int> pv;
-    pv.emplace(sv);
+    pv.push(sv);
     visited[sv] = true;
-    vector<int> ans;
-    ans.push_back(sv);
-
+    vector<int>* ans = new vector<int>();
     while (!pv.empty()) {
         int cv = pv.front();
         pv.pop();
         if (cv == ev) {
-            ans.push_back(cv);
-            break;
+            ans->push_back(ev);
         }
-        for (int i = 0; i < v; i++) {
-            if (graph[cv][i] && !visited[i]) {
-                ans.push_back(i);
-                pv.emplace(i);
-                visited[i] = true;
-            }
+        if (graph[cv][i] && !visited[i]) {
         }
     }
+}
+
+vector<int>* getPathBFS(bool** graph, int v, int sv, int ev) {
+    bool* visited = new bool[v]();
+
+    vector<int>* ans = getPathBFSHelper(graph, v, sv, ev, visited);
+
+    delete[] visited;
     return ans;
 }
 
-vector<int> getPathBFS(bool **graph, int v, int sv, int ev) {
-    bool *visited = new bool[v]();
-    return getPathBFSHelper(graph, v, sv, ev, visited);
-}
-
 int main() {
+    // Write your code here
     int v, e;
     cin >> v >> e;
-
-    bool **graph = new bool *[v];
+    bool** graph = new bool*[v];
     for (int i = 0; i < v; i++) {
         graph[i] = new bool[v]();
     }
@@ -50,18 +46,18 @@ int main() {
     }
 
     int sv, ev;
-    cout << "Enter starting and ending vertex:\n";
     cin >> sv >> ev;
 
-    vector<int> ans = getPathBFS(graph, v, sv, ev);
-    for (int i = 0; i < ans.size(); i++) {
-        cout << ans[i] << " ";
+    vector<int>* ans = getPathBFS(graph, v, sv, ev);
+    if (ans != NULL) {
+        for (int i = 0; i < ans->size(); i++) {
+            cout << ans->at(i) << " ";
+        }
+        delete ans;
     }
 
     for (int i = 0; i < v; i++) {
         delete[] graph[i];
     }
     delete[] graph;
-
-    return 0;
 }

@@ -2,25 +2,30 @@
 #include <vector>
 using namespace std;
 
-vector<int> getPathDFSHelper(bool **graph, int v, int sv, int ev,
-                             bool *visited) {
+vector<int> *getPathDFSHelper(bool **graph, int v, int sv, int ev,
+                              bool *visited) {
     if (sv == ev) {
-        cout << ev << " ";
-        return;
+        vector<int> *op = new vector<int>();
+        op->push_back(ev);
+        return op;
     }
     visited[sv] = true;
     for (int i = 0; i < v; i++) {
         if (graph[sv][i] == 1 && !visited[i]) {
-            getPathDFSHelper(graph, v, i, ev, visited);
-            cout << i << " " << sv;
+            vector<int> *smallAns = getPathDFSHelper(graph, v, i, ev, visited);
+            if (smallAns != NULL) {
+                smallAns->push_back(sv);
+                return smallAns;
+            }
         }
     }
+    return NULL;
 }
 
-vector<int> getPathDFS(bool **graph, int v, int sv, int ev) {
+vector<int> *getPathDFS(bool **graph, int v, int sv, int ev) {
     bool *visited = new bool[v]();
 
-    vector<int> ans = getPathDFSHelper(graph, v, sv, ev, visited);
+    vector<int> *ans = getPathDFSHelper(graph, v, sv, ev, visited);
 
     delete[] visited;
     return ans;
@@ -45,9 +50,12 @@ int main() {
     int sv, ev;
     cin >> sv >> ev;
 
-    vector<int> ans = getPathDFS(graph, v, sv, ev);
-    for (int i = 0; i < ans.size(); i++) {
-        cout << ans[i] << " ";
+    vector<int> *ans = getPathDFS(graph, v, sv, ev);
+    if (ans != NULL) {
+        for (int i = 0; i < ans->size(); i++) {
+            cout << ans->at(i) << " ";
+        }
+        delete ans;
     }
 
     for (int i = 0; i < v; i++) {
