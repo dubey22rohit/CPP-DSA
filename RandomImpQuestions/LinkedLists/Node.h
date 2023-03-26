@@ -10,25 +10,26 @@ class Node {
 };
 
 Node* createList() {
+    Node *head = nullptr, *tail = nullptr;
     int data;
-    Node *head = nullptr, *tail = nullptr, *nn = nullptr;
+    std::cin >> data;
     while (data != -1) {
-        std::cin >> data;
-        nn = new Node(data);
+        Node* nn = new Node(data);
         if (head == nullptr) {
             head = nn;
-            tail = nn;
+            tail = head;
         } else {
             tail->next = nn;
             tail = nn;
         }
+        std::cin >> data;
     }
     return head;
 }
 
 void printList(Node* head) {
     Node* t = head;
-    while (t->next != nullptr) {
+    while (t != nullptr) {
         std::cout << t->data << " ";
         t = t->next;
     }
