@@ -7,3 +7,8 @@
 3. First duplicate element in an array
 4. Balanced brackets
 5. Reverse linked list
+
+## 3rd April, 2023
+
+1. Valid subsequence
+2. Valid BST

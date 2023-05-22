@@ -1,13 +1,17 @@
 #include <iostream>
 using namespace std;
 
+// T.C : O(2^n)
+// SC: O(n), at a time only n calls are in the stack
 int fibonacci(int n) {
-    if (n == 0 || n == 1) {
+    if (n <= 1) {
         return 1;
     }
     return fibonacci(n - 2) + fibonacci(n - 1);
 }
 
+// TC : O(2n) or O(n)
+// SC : O(n)
 int fib2(int n, int *arr) {
     if (n == 0 || n == 1) {
         return 1;

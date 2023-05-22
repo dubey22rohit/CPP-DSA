@@ -2,36 +2,39 @@
 #include <iostream>
 using namespace std;
 
-// given n, find the minimum number of digits required, whose sum of squares
-// give n.
-//  eg : 10 = 3^2 + 1^2
-
-bool checkWhole(int n) {
-    if (ceil(n) == floor(n)) {
-        return true;
-    }
-    return false;
-}
-
 int minCount(int n) {
-    int orig = n;
-    int count = 0;
-    while (orig > 0) {
-        while (!checkWhole(sqrt(orig))) {
-            orig--;
-            n--;
-        }
-        int diff = orig - n;
-        orig = diff;
-        count++;
+    if (n <= 3) {
+        return n;
     }
-    return count;
+
+    int *dp = new int[n + 1];
+
+    dp[0] = 0;
+    dp[1] = 1;
+    dp[2] = 2;
+    dp[3] = 3;
+
+    for (int i = 4; i <= n; i++) {
+        dp[i] = i;
+        for (int j = 1; j <= ceil(sqrt(i)); j++) {
+            int temp = j * j;
+            if (temp > i) {
+                break;
+            } else {
+                dp[i] = min(dp[i], 1 + dp[i - temp]);
+            }
+        }
+    }
+
+    int res = dp[n];
+    delete[] dp;
+
+    return res;
 }
 
 int main() {
     int n;
     cin >> n;
-    int ans = minCount(n);
-    cout << "ans: " << ans;
+    cout << minCount(n);
     return 0;
 }
