@@ -15,8 +15,6 @@
 
 ## 1 June, 2023
 
-Leetcode:
-
 1. Is Subtree.
 2. Merge Two Binary Trees.
 3. Sorted Array To BST.
@@ -32,3 +30,4 @@ Leetcode:
 ## 14 June, 2023
 
 1. DFS
+2. BFS
