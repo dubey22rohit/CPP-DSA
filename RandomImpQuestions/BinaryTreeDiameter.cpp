@@ -3,6 +3,7 @@
 #include "TreeNode.h"
 using namespace std;
 
+// Diameter: Length of the longest path, through the root
 // DFS: TC: O(N), SC: O(N)
 pair<int, int> heightDiameter(TreeNode* root) {
     if (root == nullptr) {

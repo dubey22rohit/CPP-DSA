@@ -14,6 +14,7 @@ class PriorityQueue {
         }
         return pq[0];
     }
+
     void insert(T ele) {
         pq.push_back(ele);
         int childIndex = pq.size() - 1;

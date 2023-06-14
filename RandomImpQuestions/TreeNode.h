@@ -32,7 +32,7 @@ TreeNode* createTree() {
     cin >> data;
     TreeNode* root = new TreeNode(data);
     queue<TreeNode*> pn;
-    pn.emplace(root);
+    pn.push(root);
     while (!pn.empty()) {
         TreeNode* cn = pn.front();
         pn.pop();
@@ -42,7 +42,7 @@ TreeNode* createTree() {
         if (data != -1) {
             TreeNode* nn = new TreeNode(data);
             cn->lchild = nn;
-            pn.emplace(nn);
+            pn.push(nn);
         }
 
         printf("Enter the right child of %d: ", cn->data);
@@ -50,7 +50,7 @@ TreeNode* createTree() {
         if (data != -1) {
             TreeNode* nn = new TreeNode(data);
             cn->rchild = nn;
-            pn.emplace(nn);
+            pn.push(nn);
         }
     }
     return root;
@@ -58,7 +58,7 @@ TreeNode* createTree() {
 
 void printTree(TreeNode* root) {
     queue<TreeNode*> pn;
-    pn.emplace(root);
+    pn.push(root);
     while (!pn.empty()) {
         TreeNode* cn = pn.front();
         pn.pop();
@@ -66,11 +66,11 @@ void printTree(TreeNode* root) {
         cout << cn->data << ": ";
         if (cn->lchild) {
             cout << cn->lchild->data << ", ";
-            pn.emplace(cn->lchild);
+            pn.push(cn->lchild);
         }
         if (cn->rchild) {
             cout << cn->rchild->data << ", ";
-            pn.emplace(cn->rchild);
+            pn.push(cn->rchild);
         }
         cout << endl;
     }

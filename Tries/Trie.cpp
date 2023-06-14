@@ -94,6 +94,6 @@ class Trie {
                 insertWord(word.substr(j));
             }
         }
-        return search(pattern);
+        return searchWord(pattern);
     }
 };

@@ -17,6 +17,7 @@ int partition(int *input, int si, int ei) {
     input[pivotIndex] = temp;
 
     int i = si, j = ei;
+
     while (i <= pivotIndex && j >= pivotIndex) {
         while (i <= pivotIndex && input[i] <= pivot) {
             i++;
@@ -32,7 +33,6 @@ int partition(int *input, int si, int ei) {
             j--;
         }
     }
-
     return pivotIndex;
 }
 
