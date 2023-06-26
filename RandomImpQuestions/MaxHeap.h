@@ -1,30 +1,18 @@
 #include <vector>
-//! MIN Priority Queue
-//! We'll use an array to create a Heap(Complete binary tree)
 
-class PriorityQueue {
+class MaxHeap {
     std::vector<int> pq;
 
    public:
-    PriorityQueue() {}
-
+    int size() { return pq.size(); }
     bool isEmpty() { return pq.size() == 0; }
-    int getSize() { return pq.size(); }
-    int getMin() {
-        if (isEmpty()) {
-            return -1;
-        }
-        return pq[0];
-    }
+    int getMax() { return pq[0]; }
     void insert(int ele) {
-        // Satisfying the heap order property(min heap in this case) and
-        // CBT(Complete binary tree) property (All levels full except the last
-        // from L to R)
         pq.push_back(ele);
         int childIndex = pq.size() - 1;
         while (childIndex > 0) {
             int parentIndex = (childIndex - 1) / 2;
-            if (pq[childIndex] < pq[parentIndex]) {
+            if (pq[childIndex] > pq[parentIndex]) {
                 int temp = pq[childIndex];
                 pq[childIndex] = pq[parentIndex];
                 pq[parentIndex] = temp;
@@ -34,11 +22,13 @@ class PriorityQueue {
             childIndex = parentIndex;
         }
     }
+
     int remove() {
         if (isEmpty()) {
             return -1;
         }
-        int ans = pq[0];
+
+        int del = pq[0];
         pq[0] = pq[pq.size() - 1];
         pq.pop_back();
 
@@ -47,24 +37,26 @@ class PriorityQueue {
         int rChildIndex = (2 * parentIndex) + 2;
 
         while (lChildIndex < pq.size()) {
-            int minIndex = parentIndex;
-            if (pq[minIndex] > pq[lChildIndex]) {
-                minIndex = lChildIndex;
+            int maxIndex = parentIndex;
+            if (pq[lChildIndex] > pq[maxIndex]) {
+                maxIndex = lChildIndex;
             }
-            if (rChildIndex < pq.size() && pq[rChildIndex] < pq[minIndex]) {
-                minIndex = rChildIndex;
+            if (rChildIndex < pq.size() && pq[rChildIndex] > pq[maxIndex]) {
+                maxIndex = rChildIndex;
             }
-            if (minIndex == parentIndex) {
+            if (parentIndex == maxIndex) {
                 break;
             }
-            int temp = pq[minIndex];
-            pq[minIndex] = pq[parentIndex];
+
+            int temp = pq[maxIndex];
+            pq[maxIndex] = pq[parentIndex];
             pq[parentIndex] = temp;
 
-            parentIndex = minIndex;
+            parentIndex = maxIndex;
             lChildIndex = (2 * parentIndex) + 1;
             rChildIndex = (2 * parentIndex) + 2;
         }
-        return ans;
-    };
+
+        return del;
+    }
 };

@@ -16,12 +16,12 @@ void printDFS(bool **graph, int v, int sv, bool *visited) {
 
 void DFS(bool **graph, int v) {
     bool *visited = new bool[v]();
-
     for (int i = 0; i < v; i++) {
         if (!visited[i]) {
             printDFS(graph, v, i, visited);
         }
     }
+
     delete[] visited;
 }
 

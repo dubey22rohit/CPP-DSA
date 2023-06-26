@@ -31,3 +31,14 @@
 
 1. DFS
 2. BFS
+
+## 25 June, 2023
+
+1. Max Heap
+2. Min Heap
+3. Heap Sort
+4. Reverse String Words
+
+## 26 June, 2023
+
+1. Has Path

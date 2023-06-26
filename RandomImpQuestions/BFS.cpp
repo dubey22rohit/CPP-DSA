@@ -10,6 +10,7 @@ void printBFS(bool **graph, int v, int sv, bool *visited) {
         int cv = pv.front();
         cout << cv << " ";
         pv.pop();
+
         for (int i = 0; i < v; i++) {
             if (i == cv) {
                 continue;
@@ -24,12 +25,12 @@ void printBFS(bool **graph, int v, int sv, bool *visited) {
 
 void BFS(bool **graph, int v) {
     bool *visited = new bool[v]();
-
     for (int i = 0; i < v; i++) {
         if (!visited[i]) {
             printBFS(graph, v, i, visited);
         }
     }
+
     delete[] visited;
 }
 
