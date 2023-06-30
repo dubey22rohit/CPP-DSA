@@ -1,0 +1,9 @@
+{
+  "files.associations": {
+    "*.html": "html",
+    "*.gohtml": "html",
+    "*.tmpl": "html",
+    "vector": "cpp",
+    "string": "cpp"
+  }
+}

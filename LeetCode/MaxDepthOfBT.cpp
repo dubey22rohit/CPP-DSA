@@ -6,7 +6,7 @@ using namespace std;
 // https://leetcode.com/problems/maximum-depth-of-binary-tree/description/
 // Basically the height of the tree
 
-int maxDepth(TreeNode<int>* root) {
+int maxDepth(TreeNode* root) {
     if (root == nullptr) {
         return 0;
     }

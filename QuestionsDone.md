@@ -42,3 +42,13 @@
 ## 26 June, 2023
 
 1. Has Path
+2. BST from sorted array
+3. Validate BST
+
+## 30 June, 2023
+
+1. Group Anagrams
+2. Product Except Itself
+3. Top K Frequent Elements
+4. Valid Palindrome
+5. Valid Anagram

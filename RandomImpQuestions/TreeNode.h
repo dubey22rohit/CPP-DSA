@@ -57,6 +57,9 @@ TreeNode* createTree() {
 }
 
 void printTree(TreeNode* root) {
+    if (root == nullptr) {
+        return;
+    }
     queue<TreeNode*> pn;
     pn.push(root);
     while (!pn.empty()) {
