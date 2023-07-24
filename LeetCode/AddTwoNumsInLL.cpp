@@ -6,39 +6,6 @@
 
 using namespace std;
 
-// ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-//     long long l1num = 0, l2num = 0, sum = 0;
-//     int i = 0;
-//     while (l1 != nullptr) {
-//         l1num += l1->val * pow(10, i);
-//         i++;
-//         l1 = l1->next;
-//     }
-//     cout << "\nl1num: " << l1num;
-//     i = 0;
-//     while (l2 != nullptr) {
-//         l2num += l2->val * pow(10, i);
-//         i++;
-//         l2 = l2->next;
-//     }
-//     cout << "\nl2num: " << l2num;
-//     sum = l1num + l2num;
-//     ListNode *newList = nullptr, *k = nullptr;
-//     while (sum >= 0) {
-//         int rem = sum % 10;
-//         ListNode* nn = new ListNode(rem);
-//         if (newList == nullptr) {
-//             newList = nn;
-//             k = newList;
-//         } else {
-//             k->next = nn;
-//             k = k->next;
-//         }
-//         sum /= 10;
-//     }
-//     return newList;
-// }
-
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
     ListNode* sl = nullptr;
     ListNode* slp = sl;

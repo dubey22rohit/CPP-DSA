@@ -52,3 +52,29 @@
 3. Top K Frequent Elements
 4. Valid Palindrome
 5. Valid Anagram
+
+## 21 Jul, 2023
+
+1. Binary Search Recursive
+2. Binary Search
+3. Check AB
+4. Keypad Code
+5. Merge Sort
+
+## 22 Jul, 2023
+
+1. Quick Sort
+2. Remove Duplicates
+3. Remove X
+4. Replace Char
+5. Staircase
+6. Subsequences - TODO
+
+## 23 July, 2023
+
+1. BTNode
+2. Two Sum
+3. Group Anagrams
+4. Valid Palindrome
+5. Valid Parenthesis
+6. Binary Search

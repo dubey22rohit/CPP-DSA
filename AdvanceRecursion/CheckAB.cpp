@@ -22,30 +22,6 @@ bool checkAB(char input[]) {
     return ans;
 }
 
-// My solution:
-//  bool checkAB(string s) {
-//      if (s.empty()) {
-//          return true;
-//      }
-//      int skip = 0;
-//      if (s[0] == 'a') {
-//          if (s[1] == 'a' || (s[1] == 'b' && s[2] == 'b')) {
-//              if (s[1] == 'b' && s[2] == 'b') {
-//                  skip = 3;
-//              } else {
-//                  skip = 2;
-//              }
-//              return checkAB(s.substr(skip)) && true;
-//          }
-//      } else if (s[0] == 'b' && s[1] == 'b') {
-//          if (s[2] == 'a') {
-//              skip = 3;
-//              return checkAB(s.substr(skip)) && true;
-//          }
-//      }
-//      return false;
-//  }
-
 int main() {
     int n;
     cin >> n;
