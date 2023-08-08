@@ -85,3 +85,10 @@
 2. Reverse Linked List
 3. Merge Two Sorted Lists
 4. Linked List Cycle
+
+## 8 August, 2023
+
+1. GraphBFS
+2. GraphDFS
+3. OneAway
+4. URLify
