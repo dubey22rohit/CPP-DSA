@@ -93,3 +93,14 @@
 3. OneAway
 4. URLify
 5. ZeroMatrix
+
+## 9 August, 2023
+
+1. StringRotationOfAnother
+
+## 27th August, 2023
+
+1. MaxDepthofABTree
+2. TreeNode: TreeNode class + createTree + printTree methods
+3. TreesEqual
+4. HeightBalanced
