@@ -104,3 +104,17 @@
 2. TreeNode: TreeNode class + createTree + printTree methods
 3. TreesEqual
 4. HeightBalanced
+
+## 7th Septemper, 2023
+
+1. Two Sum 2
+
+## 10 September, 2023
+
+1. ContainerWithMostWater.
+2. ReversePolishNotation
+3. TrappingRainwater - TODO
+4. GenerateParentheses - TODO
+5. DailyTemperatures - TODO
+6. SearchA2DMatrix
+7. InvertBinaryTree
