@@ -154,3 +154,6 @@
 1. Trie
 
 ## 2 Nov, 2023
+
+1. Triple Step
+2. Tower of Hanoi
