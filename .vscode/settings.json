@@ -3,7 +3,7 @@
     "*.html": "html",
     "*.gohtml": "html",
     "*.tmpl": "html",
-    "string": "cpp",
-    "iostream": "cpp"
+    "unordered_map": "cpp",
+    "vector": "cpp"
   }
 }

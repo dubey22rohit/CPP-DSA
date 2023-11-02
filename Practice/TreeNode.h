@@ -4,12 +4,12 @@ using namespace std;
 
 class TreeNode {
    public:
-    int data;
+    int val;
     TreeNode* left;
     TreeNode* right;
 
-    TreeNode(int data) {
-        this->data = data;
+    TreeNode(int val) {
+        this->val = val;
         this->left = nullptr;
         this->right = nullptr;
     }
@@ -31,7 +31,7 @@ TreeNode* createTree() {
         TreeNode* fn = pn.front();
         pn.pop();
 
-        printf("enter the left child of %d", fn->data);
+        printf("enter the left child of %d", fn->val);
         cin >> data;
         if (data != -1) {
             TreeNode* lchild = new TreeNode(data);
@@ -39,7 +39,7 @@ TreeNode* createTree() {
             pn.push(lchild);
         }
 
-        printf("enter the right child of %d", fn->data);
+        printf("enter the right child of %d", fn->val);
         cin >> data;
         if (data != -1) {
             TreeNode* rchild = new TreeNode(data);
@@ -65,16 +65,16 @@ void printTree(TreeNode* root) {
         TreeNode* fn = pn.front();
         pn.pop();
 
-        cout << fn->data << ": ";
+        cout << fn->val << ": ";
 
         if (fn->left) {
             pn.push(fn->left);
-            cout << fn->left->data << ", ";
+            cout << fn->left->val << ", ";
         }
 
         if (fn->right) {
             pn.push(fn->right);
-            cout << fn->right->data;
+            cout << fn->right->val;
         }
 
         cout << "\n";

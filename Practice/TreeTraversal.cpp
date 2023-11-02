@@ -9,7 +9,7 @@ void preorder(TreeNode* root) {
     if (!root) {
         return;
     }
-    cout << root->data << " ";
+    cout << root->val << " ";
     preorder(root->left);
     preorder(root->right);
 }
@@ -19,7 +19,7 @@ void inorder(TreeNode* root) {
         return;
     }
     inorder(root->left);
-    cout << root->data << " ";
+    cout << root->val << " ";
     inorder(root->right);
 }
 
@@ -29,7 +29,7 @@ void postorder(TreeNode* root) {
     }
     postorder(root->left);
     postorder(root->right);
-    cout << root->data << " ";
+    cout << root->val << " ";
 }
 
 int main() {

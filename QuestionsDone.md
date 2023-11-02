@@ -118,3 +118,39 @@
 5. DailyTemperatures - TODO
 6. SearchA2DMatrix
 7. InvertBinaryTree
+
+## 12 September, 2023
+
+1. LongestConsecutiveSequence
+2. ThreeSum
+
+## 13 Septemper, 2023
+
+1. MinInRotatedSortedArray
+
+## 08 Oct, 2023
+
+1. ReorderList - Do Revision
+
+## 09 Oct, 2023
+
+1. BinaryTreeDiameter
+
+## 10 Oct, 2023
+
+1. SubTreeOfAnotherTree
+2. ValidBST
+
+## 11 Oct, 2023
+
+1. BTRightSideView
+
+## 12 Oct, 2023
+
+1. BTLevelOrderTraversal
+
+## 13 Oct, 2023
+
+1. Trie
+
+## 2 Nov, 2023

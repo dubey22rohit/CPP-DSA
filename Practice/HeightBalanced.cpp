@@ -3,54 +3,35 @@
 #include "TreeNode.h"
 using namespace std;
 
-// int height(TreeNode* root) {
-//     if (!root) {
-//         return 0;
-//     }
-
-//     return 1 + max(height(root->left), height(root->right));
-// }
-
-// bool isBalanced(TreeNode* root) {
-//     if (!root) {
-//         return true;
-//     }
-
-//     if (abs(height(root->left) - height(root->right)) <= 1 &&
-//         isBalanced(root->left) && isBalanced(root->right)) {
-//         return true;
-//     }
-//     return false;
-// }
-
-pair<bool, int> isBalancedHeight(TreeNode* root) {
+pair<int, bool> heightBalanced(TreeNode* root) {
     if (!root) {
         return {true, 0};
     }
 
-    pair<bool, int> smallAnsL = isBalancedHeight(root->left);
-    pair<bool, int> smallAnsR = isBalancedHeight(root->right);
+    pair<int, bool> smallAnsL = heightBalanced(root->left);
+    pair<int, bool> smallAnsR = heightBalanced(root->right);
 
-    bool isBalancedL = smallAnsL.first;
-    int heightL = smallAnsL.second;
+    int heightL = smallAnsL.first;
+    bool isBalancedL = smallAnsL.second;
 
-    bool isBalancedR = smallAnsR.first;
-    int heightR = smallAnsR.second;
+    int heightR = smallAnsR.first;
+    bool isBalancedR = smallAnsR.second;
 
     bool ansBalanced =
         abs(heightL - heightR) <= 1 && isBalancedL && isBalancedR;
 
     int height = max(heightL, heightR) + 1;
-    return {ansBalanced, height};
+    return {height, ansBalanced};
 }
+
+bool isBalanced(TreeNode* root) { return heightBalanced(root).first; }
 
 int main() {
     TreeNode* root = createTree();
     printTree(root);
 
-    pair<bool, int> treeBalanced = isBalancedHeight(root);
-    cout << "is balanced: " << treeBalanced.first << endl;
-    cout << "height: " << treeBalanced.second << endl;
+    bool treeBalanced = isBalanced(root);
+    cout << "is balanced: " << treeBalanced << endl;
 
     return 0;
 }

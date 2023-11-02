@@ -13,7 +13,7 @@ bool isEqual(TreeNode* root1, TreeNode* root2) {
     if (root1 && !root2) {
         return false;
     }
-    if (root1->data == root2->data && isEqual(root1->left, root2->left) &&
+    if (root1->val == root2->val && isEqual(root1->left, root2->left) &&
         isEqual(root1->right, root2->right)) {
         return true;
     }

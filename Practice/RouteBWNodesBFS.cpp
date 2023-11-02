@@ -2,38 +2,29 @@
 #include <queue>
 using namespace std;
 
-void printBFS(bool **graph, int sv, int v, bool *visited) {
+//! incomplete
+bool hasPathBFS(bool** graph, int v, int sv, int ev) {
     queue<int> pv;
-    pv.push(sv);
+    bool* visited = new bool[v]();
     visited[sv] = true;
+    pv.push(sv);
     while (!pv.empty()) {
         int cv = pv.front();
         pv.pop();
-        cout << cv << " ";
+
         for (int i = 0; i < v; i++) {
-            if (graph[cv][i] && !visited[i] && i != cv) {
-                pv.push(i);
-                visited[i] = true;
+            if (!visited[i] && graph[i][ev]) {
+                return true;
             }
         }
     }
-}
-
-void BFS(bool **graph, int v) {
-    bool *visited = new bool[v]();
-    for (int i = 0; i < v; i++) {
-        if (!visited[i]) {
-            printBFS(graph, i, v, visited);
-        }
-    }
-    delete[] visited;
 }
 
 int main() {
     int v, e;
     cin >> v >> e;
 
-    bool **graph = new bool *[v]();
+    bool** graph = new bool*[v]();
     for (int i = 0; i < v; i++) {
         graph[i] = new bool[v]();
     }
@@ -44,7 +35,10 @@ int main() {
         graph[b][a] = true;
     }
 
-    BFS(graph, v);
+    int sv, ev;
+    cin >> sv >> ev;
+
+    cout << (hasPathBFS(graph, v, sv, ev) ? "has path" : "no path");
 
     return 0;
 }
