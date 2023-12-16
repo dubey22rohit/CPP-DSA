@@ -4,10 +4,16 @@
 using namespace std;
 
 vector<int> dailyTemperatures(vector<int>& temperatures) {
-    stack<int> stk;
+    stack<pair<int, int>> s;
     vector<int> ans(temperatures.size());
-    int days = 0;
-    for (auto t : temperatures) {
+    for (int i = 0; i < temperatures.size(); i++) {
+        int cd = i, ct = temperatures[i];
+        while (!s.empty() && s.top().second < ct) {
+            int pd = s.top().first;
+            s.pop();
+            ans[pd] = cd - pd;
+        }
+        s.push({cd, ct});
     }
     return ans;
 }

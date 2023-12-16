@@ -1,22 +1,31 @@
 #include <iostream>
 #include <set>
+#include <string>
 using namespace std;
 
 int lengthOfLongestSubstring(string s) {
-    set<int> visited;
-    int max_length = 0;
-    int i = 0, j = 0;
-    while (j < s.length()) {
-        if (visited.find(s[j]) == visited.end()) {
-            visited.insert(s[j]);
-            j++;
-            max_length = max(max_length, j - i);
-        } else {
-            visited.erase(s[i]);
-            i++;
-        }
+  set<char> visited;
+  int i = 0, j = 0;
+  int maxLength = 0;
+  while (j < s.length()) {
+    if (visited.find(s[j]) == visited.end()) {
+      visited.insert(s[j]);
+      j++;
+      maxLength = max(maxLength, j - i);
+    } else {
+      visited.erase(s[j]);
+      i++;
     }
-    return max_length;
+  }
+  return maxLength;
 }
 
-int main() { return 0; }
+int main() {
+  string s;
+  getline(cin, s);
+
+  int maxLen = lengthOfLongestSubstring(s);
+  cout << maxLen;
+
+  return 0;
+}
