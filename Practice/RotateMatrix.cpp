@@ -1,36 +1,51 @@
 #include <iostream>
 using namespace std;
 
-int **rotateMatrix(int **matrix, int n) {
-    int **rm = new int *[n];
-    for (int i = 0; i < n; i++) {
-        rm[i] = new int[n]();
+void swap(int &a, int &b) {
+  int temp = a;
+  a = b;
+  b = temp;
+}
+
+void reverseArray(int *arr, int n) {
+  int s = 0, e = n - 1;
+  while (s < e) {
+    swap(arr[s], arr[e]);
+    s++;
+    e--;
+  }
+}
+
+void rotateMatrix(int **matrix, int n) {
+  for (int i = 0; i < n; i++) {
+    for (int j = i; j < n; j++) {
+      swap(matrix[i][j], matrix[j][i]);
     }
-    int i = 0, j = 0;
-    while (i < n && j < n) {
-    }
+    reverseArray(matrix[i], n);
+  }
 }
 
 int main() {
-    int n;
-    cin >> n;
-    int **matrix = new int *[n]();
-    for (int i = 0; i < n; i++) {
-        matrix[i] = new int[n]();
-    }
+  int n;
+  cin >> n;
+  int **matrix = new int *[n]();
+  for (int i = 0; i < n; i++) {
+    matrix[i] = new int[n]();
+  }
 
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cin >> matrix[i][j];
-        }
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      cin >> matrix[i][j];
     }
+  }
 
-    int **nm = rotateMatrix(matrix, n);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cout << nm[i][j];
-        }
+  rotateMatrix(matrix, n);
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      cout << matrix[i][j] << " ";
     }
+    cout << "\n";
+  }
 
-    return 0;
+  return 0;
 }
