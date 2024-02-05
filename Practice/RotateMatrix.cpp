@@ -19,8 +19,10 @@ void reverseArray(int *arr, int n) {
 void rotateMatrix(int **matrix, int n) {
   for (int i = 0; i < n; i++) {
     for (int j = i; j < n; j++) {
+      // Transpose
       swap(matrix[i][j], matrix[j][i]);
     }
+    // reverse
     reverseArray(matrix[i], n);
   }
 }
