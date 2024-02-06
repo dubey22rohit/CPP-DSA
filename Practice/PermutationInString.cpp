@@ -2,9 +2,8 @@
 #include <vector>
 using namespace std;
 
-// incomplete
-bool isPermutation(vector<int> &count) {
-  for (int i = 0; i < 26; i++) {
+bool checkPermutation(vector<int> &count) {
+  for (int i = 0; i < 26; ++i) {
     if (count[i] != 0) {
       return false;
     }
@@ -13,29 +12,31 @@ bool isPermutation(vector<int> &count) {
 }
 
 bool checkInclusion(string s1, string s2) {
-  vector<int> count(26, 0);
-  for (auto c : s1) {
-    count[c - 'a']++;
-  }
-  int i = 0, j = 0;
-  while (i < s2.size()) {
-    if (count[s2[i] - 'a'] != 0) {
-      count[s2[i] - 'a']--;
-      j = i + 1;
-      break;
-    }
-    i++;
+  int m = s1.size();
+  int n = s2.size();
+
+  if (m > n) {
+    return false;
   }
 
-  while (j < s2.size()) {
-    if (count[s2[j] - 'a'] == 0) {
-      if (isPermutation(count)) {
-        return true;
-      }
-    }
-    j++;
+  vector<int> count(26);
+
+  for (int i = 0; i < m; i++) {
+    count[s1[i] - 'a']++;
+    count[s2[i] - 'a']--;
   }
 
+  if (checkPermutation(count)) {
+    return true;
+  }
+
+  for (int i = m; i < n; i++) {
+    count[s2[i] - 'a']--;
+    count[s2[i - m] - 'a']++;
+    if (checkPermutation(count)) {
+      return true;
+    }
+  }
   return false;
 }
 
