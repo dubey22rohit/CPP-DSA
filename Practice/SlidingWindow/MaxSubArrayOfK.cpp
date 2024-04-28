@@ -20,7 +20,6 @@ int findMaximumSubarray(int k, const vector<int> &arr) {
 }
 
 int main() {
-  // vector<int> arr{2, 1, 5, 1, 3, 2};
   vector<int> arr{2, 3, 4, 1, 5};
   int maxSum = findMaximumSubarray(2, arr);
   cout << maxSum;

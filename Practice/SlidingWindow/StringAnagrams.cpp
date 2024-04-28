@@ -2,6 +2,7 @@
 #include <unordered_map>
 using namespace std;
 
+// String Anagrams (hard)
 vector<int> findStringAnagrams(const string &str, const string &pattern) {
   int ws = 0, matched = 0;
   unordered_map<char, int> hm;

@@ -3,6 +3,7 @@
 #include <vector>
 using namespace std;
 
+// Pair with Target Sum (easy)
 static pair<int, int> search(const vector<int> &arr, int targetSum) {
   int left = 0, right = arr.size() - 1;
   while (left < right) {

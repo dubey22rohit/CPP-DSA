@@ -69,6 +69,10 @@
     "__string": "cpp",
     "chrono": "cpp",
     "compare": "cpp",
-    "algorithm": "cpp"
-  }
+    "algorithm": "cpp",
+    "version": "cpp",
+    "execution": "cpp",
+    "unordered_set": "cpp"
+  },
+  "C_Cpp.errorSquiggles": "disabled"
 }

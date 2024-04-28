@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// [1, 1, 2, 3, 4, 5, 5, 6];
+// Remove Duplicates (easy)
 int remove(vector<int> arr) {
   int nextNonduplicate = 1;
   for (int i = 1; i < arr.size(); ++i) {
