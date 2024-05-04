@@ -8,6 +8,17 @@ bool containsDuplicate(vector<int>& nums) {
   return ns.size() != nums.size();
 }
 
+bool containsDuplicateHm(vector<int>& nums) {
+  unordered_map<int, int> hm;
+  for (auto n : nums) {
+    if (hm.find(n) != hm.end()) {
+      return true;
+    }
+    hm[n]++;
+  }
+  return false;
+}
+
 int main() {
   vector<int> nums{1, 2, 3, 4};
   bool ans = containsDuplicate(nums);
