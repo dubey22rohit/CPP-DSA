@@ -9,7 +9,6 @@ int search(vector<int>& nums, int target) {
     if (nums[mid] == target) {
       return mid;
     }
-    // left half is sorted
     if (nums[left] <= nums[mid]) {
       if (nums[left] <= target && target <= nums[mid]) {
         right = mid - 1;
