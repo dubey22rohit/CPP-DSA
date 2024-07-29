@@ -3,12 +3,29 @@
 #include "../Helpers/ListNode.h"
 using namespace std;
 
+/**
+ * Finds the middle node of a linked list.
+ *
+ * @param head A pointer to the head of the linked list.
+ * @return A pointer to the middle node of the linked list.
+ *
+ * @throws None
+ */
 ListNode* findMiddle(ListNode* head) {
+  // Declare two pointers, fast and slow, to the head of the list.
   ListNode *fast = head, *slow = head;
+
+  // Continue the loop until either the fast pointer reaches the end of the
+  // list or the fast pointer's next node is null.
   while (fast && fast->next) {
+    // Move the fast pointer two steps ahead.
     fast = fast->next->next;
+
+    // Move the slow pointer one step ahead.
     slow = slow->next;
   }
+
+  // Return the slow pointer, which will point to the middle node.
   return slow;
 }
 

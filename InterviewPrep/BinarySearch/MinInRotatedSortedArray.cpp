@@ -14,16 +14,36 @@ process until you find the minimum element.
 */
 // min = start of an un-rotated array, so always search in the rotated half
 
+/**
+ * Finds the minimum element in a rotated sorted array using a modified
+ * binary search approach.
+ *
+ * @param nums the rotated sorted array
+ * @return the minimum element in the array
+ */
 int findMin(vector<int>& nums) {
-  int left = 0, right = nums.size() - 1;
+  // Initialize the left and right indices
+  int left = 0;
+  int right = nums.size() - 1;
+
+  // Perform the binary search
   while (left < right) {
+    // Calculate the middle index
     int mid = left + (right - left) / 2;
+
+    // If the middle element is greater than the rightmost element,
+    // the right half is not sorted and the minimum element is on the right side
     if (nums[mid] > nums[right]) {
       left = mid + 1;
-    } else if (nums[mid] < nums[right]) {
+    }
+    // If the middle element is less than the rightmost element,
+    // the right half is sorted, and the minimum element is on the left side
+    else {
       right = mid;
     }
   }
+
+  // Return the minimum element
   return nums[left];
 }
 

@@ -10,17 +10,41 @@ using namespace std;
 
 // Similar to Two Sum from leetcode
 
-static pair<int, int> search(const vector<int> &arr, int targetSum) {
+/**
+ * @brief Finds a pair of indices in a sorted array whose elements sum up to a
+ * target value.
+ *
+ * @param arr The sorted array of integers.
+ * @param targetSum The target sum.
+ *
+ * @return A pair of indices (i, j) such that arr[i] + arr[j] = targetSum, or
+ * (-1, -1) if no such pair exists.
+ *
+ * @throws None
+ */
+pair<int, int> search(const vector<int> &arr, int targetSum) {
+  // Initialize pointers to the start and end of the array.
   int left = 0, right = arr.size() - 1;
+
+  // Iterate until the pointers meet or pass each other.
   while (left < right) {
+    // If the sum of the current pair is less than the target, move the left
+    // pointer to the right to increase the sum.
     if (arr[left] + arr[right] < targetSum) {
       left++;
-    } else if (arr[left] + arr[right] > targetSum) {
+    }
+    // If the sum of the current pair is greater than the target, move the right
+    // pointer to the left to decrease the sum.
+    else if (arr[left] + arr[right] > targetSum) {
       right--;
-    } else {
+    }
+    // If the sum is equal to the target, return the indices.
+    else {
       return make_pair(left, right);
     }
   }
+
+  // If no pair with the target sum is found, return (-1, -1).
   return make_pair(-1, -1);
 }
 // The time complexity of the above algorithm will be 𝑂(𝑁)

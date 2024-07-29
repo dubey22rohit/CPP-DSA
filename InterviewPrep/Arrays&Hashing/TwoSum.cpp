@@ -3,15 +3,31 @@
 #include <vector>
 using namespace std;
 
+/**
+ * Function to find two numbers in an array whose sum is equal to a given
+ * target.
+ *
+ * @param nums vector of integers representing the array
+ * @param target integer representing the target sum
+ * @return vector of integers representing the indices of the two numbers
+ */
 vector<int> twoSum(vector<int> &nums, int target) {
+  // Create a hashmap to store numbers and their indices
   unordered_map<int, int> hm;
+
+  // Iterate through the array
   for (int i = 0; i < nums.size(); ++i) {
+    // If the complement (target - nums[i]) is already in the map
     if (hm.find(target - nums[i]) != hm.end()) {
-      return {i, hm[target - nums[i]]};
+      // Return the indices of the two numbers
+      return {hm[target - nums[i]], i};
     } else {
+      // Store the number and its index in the map
       hm[nums[i]] = i;
     }
   }
+
+  // If no two numbers with the target sum are found, return an empty vector
   return {};
 }
 

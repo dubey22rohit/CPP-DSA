@@ -4,15 +4,34 @@
 
 using namespace std;
 
+/**
+ * Checks if a linked list has a cycle.
+ *
+ * @param head A pointer to the head of the linked list.
+ * @return True if the linked list has a cycle, false otherwise.
+ */
 static bool hasCycle(ListNode *head) {
+  // Initialize two pointers, fast and slow, to the head of the list.
   ListNode *fast = head, *slow = head;
+
+  // Continue the loop until either the fast pointer reaches the end of the
+  // list or the fast pointer's next node is null.
   while (fast && fast->next) {
+    // Move the fast pointer two steps ahead.
     fast = fast->next->next;
+
+    // Move the slow pointer one step ahead.
     slow = slow->next;
+
+    // If the slow pointer and the fast pointer meet at the same node, it
+    // means there is a cycle in the list.
     if (slow == fast) {
       return true;
     }
   }
+
+  // If the loop completes without finding a cycle, there is no cycle in the
+  // list.
   return false;
 }
 
