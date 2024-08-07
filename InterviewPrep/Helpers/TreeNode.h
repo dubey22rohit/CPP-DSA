@@ -1,6 +1,5 @@
 #include <iostream>
 #include <queue>
-using namespace std;
 class TreeNode {
  public:
   int val;
@@ -22,17 +21,17 @@ class TreeNode {
 
 TreeNode *createTree() {
   int data;
-  cout << "Enter root data: ";
-  cin >> data;
+  std::cout << "Enter root data: ";
+  std::cin >> data;
   TreeNode *root = new TreeNode(data);
-  queue<TreeNode *> pn;
+  std::queue<TreeNode *> pn;
   pn.emplace(root);
   while (!pn.empty()) {
     TreeNode *currNode = pn.front();
     pn.pop();
 
     printf("Enter data for left child of %d: ", currNode->val);
-    cin >> data;
+    std::cin >> data;
     if (data != -1) {
       TreeNode *leftChild = new TreeNode(data);
       currNode->left = leftChild;
@@ -40,7 +39,7 @@ TreeNode *createTree() {
     }
 
     printf("Enter data for right child of %d: ", currNode->val);
-    cin >> data;
+    std::cin >> data;
     if (data != -1) {
       TreeNode *rightChild = new TreeNode(data);
       currNode->right = rightChild;
@@ -52,7 +51,7 @@ TreeNode *createTree() {
 }
 
 void printTree(TreeNode *root) {
-  queue<TreeNode *> pn;
+  std::queue<TreeNode *> pn;
   pn.emplace(root);
   while (!pn.empty()) {
     TreeNode *currNode = pn.front();

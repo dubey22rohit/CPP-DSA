@@ -1,2 +1,4 @@
 a.out
 *.dSYM
+appsettings-*.json
+drf-*
