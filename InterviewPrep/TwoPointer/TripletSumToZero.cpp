@@ -23,7 +23,6 @@ void searchPair(vector<int> &arr, int targetSum, int left,
                 vector<vector<int>> &triplets) {
   // Initialize pointers to the start and end of the array.
   int right = arr.size() - 1;
-
   // Iterate through the array.
   while (left < right) {
     // Calculate the sum of the current triplet.
@@ -74,7 +73,6 @@ vector<vector<int>> searchTriplets(vector<int> &arr) {
 
   // Sort the array.
   sort(arr.begin(), arr.end());
-
   // Iterate through the array.
   for (int i = 0; i < arr.size(); ++i) {
     // Skip duplicate elements.
