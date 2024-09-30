@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../Helpers/TreeNode.cpp"
+#include "../Helpers/TreeNode.h"
 using namespace std;
 
 // Given a binary tree and a number ‘S’, find all paths in the tree such that

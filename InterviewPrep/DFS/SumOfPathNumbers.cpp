@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../Helpers/TreeNode.cpp"
+#include "../Helpers/TreeNode.h"
 using namespace std;
 
 // Given a binary tree where each node can only have a digit (0-9) value, each

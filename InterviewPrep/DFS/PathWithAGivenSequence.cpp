@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../Helpers/TreeNode.cpp"
+#include "../Helpers/TreeNode.h"
 using namespace std;
 
 // Given a binary tree and a number sequence, find if the sequence is present as

@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../Helpers/TreeNode.cpp"
+#include "../Helpers/TreeNode.h"
 using namespace std;
 
 // Given a binary tree, find the length of its diameter. The diameter of a tree

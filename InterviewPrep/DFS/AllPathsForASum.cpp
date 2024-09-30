@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../Helpers/TreeNode.cpp"
+#include "../Helpers/TreeNode.h"
 using namespace std;
 
 // Given a binary tree and a number ‘S’, find all paths from root-to-leaf such
@@ -34,8 +34,8 @@ void findAllPathsHelper(TreeNode* root, int sum, vector<int>& currPath,
     findAllPathsHelper(root->right, sum - root->val, currPath, allPaths);
   }
 
-  currPath.pop_back();
   // Backtrack and remove the current path
+  currPath.pop_back();
 }
 
 /**

@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../Helpers/TreeNode.cpp"
+#include "../Helpers/TreeNode.h"
 using namespace std;
 
 // Find the path with the maximum sum in a given binary tree. Write a function
