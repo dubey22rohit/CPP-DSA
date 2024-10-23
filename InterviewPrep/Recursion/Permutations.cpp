@@ -2,6 +2,8 @@
 #include <vector>
 using namespace std;
 
+// TC: O(n! * n)
+// SC: O(1)
 void permutationsHelper(vector<int>& nums, int start,
                         vector<vector<int>>& ans) {
   if (start == nums.size()) {

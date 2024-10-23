@@ -2,6 +2,8 @@
 #include <vector>
 using namespace std;
 
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+
 int maxProfit(vector<int>& prices) {
   int l = 0, r = 1, prof = 0;
   while (r < prices.size()) {

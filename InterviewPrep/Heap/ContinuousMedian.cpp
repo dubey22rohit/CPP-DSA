@@ -2,6 +2,7 @@
 #include <queue>
 using namespace std;
 
+// TODO: Revisit
 class MedianFinder {
  public:
   // Max Heap
@@ -34,8 +35,3 @@ class MedianFinder {
 };
 
 int main() { return 0; }
-
-// Dealer info in send work order, name and address before phone and number and
-// also explicitly mark it as dealer data.
-// button to be disabled View edit dispatch - filter in units and paginated show
-// popup when no groups for selected default parts

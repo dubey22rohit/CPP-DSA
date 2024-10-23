@@ -2,6 +2,7 @@
 #include <vector>
 using namespace std;
 
+// Revise
 void subsetSumHelper(vector<int> &nums, vector<int> &dp, int sum, int idx) {
   if (idx >= nums.size()) {
     dp.push_back(sum);
