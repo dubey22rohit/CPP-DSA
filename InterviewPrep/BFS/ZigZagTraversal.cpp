@@ -4,6 +4,7 @@
 #include "../Helpers/TreeNode.h"
 using namespace std;
 
+// https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
 vector<vector<int>> traverse(TreeNode* root) {
   if (!root) {
     return {};
@@ -44,7 +45,6 @@ vector<vector<int>> traverse(TreeNode* root) {
 int main() {
   TreeNode* root = createTree();
   vector<vector<int>> ans = traverse(root);
-  cout << "\nANS:\n";
   for (auto a : ans) {
     for (auto n : a) {
       cout << n << ", ";
