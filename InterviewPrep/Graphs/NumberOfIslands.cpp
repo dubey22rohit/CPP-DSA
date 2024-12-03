@@ -17,6 +17,22 @@ void dfs(vector<vector<char>>& grid, int r, int c) {
   dfs(grid, r, c - 1);
 }
 
+int numIslandsDFS(vector<vector<char>>& grid) {
+  int ROWS = grid.size();
+  int COLS = grid[0].size();
+
+  int result = 0;
+  for (int r = 0; r < ROWS; r++) {
+    for (int c = 0; c < COLS; c++) {
+      if (grid[r][c] == '1') {
+        dfs(grid, r, c);
+        result++;
+      }
+    }
+  }
+  return result;
+}
+
 void bfs(vector<vector<char>>& grid, int r, int c) {
   queue<pair<int, int>> q;
   grid[r][c] = '0';
@@ -38,22 +54,6 @@ void bfs(vector<vector<char>>& grid, int r, int c) {
       }
     }
   }
-}
-
-int numIslandsDFS(vector<vector<char>>& grid) {
-  int ROWS = grid.size();
-  int COLS = grid[0].size();
-
-  int result = 0;
-  for (int r = 0; r < ROWS; r++) {
-    for (int c = 0; c < COLS; c++) {
-      if (grid[r][c] == '1') {
-        dfs(grid, r, c);
-        result++;
-      }
-    }
-  }
-  return result;
 }
 
 int numIslandsBFS(vector<vector<char>>& grid) {
