@@ -1,21 +1,32 @@
 #include <iostream>
+#include <unordered_map>
 #include <vector>
 using namespace std;
 
-int lenOfLongSubarr(vector<int> &arr, int n, int k) {
-  int ws = 0, len = 0;
-  long long currSum = 0;
-  for (int we = 0; we < n; ++we) {
-    currSum += arr[we];
-    while (currSum > k) {
-      currSum -= arr[ws];
-      ws++;
+// https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
+int lenOfLongestSubarr(vector<int>& arr, int k) {
+  unordered_map<int, int> preMap;
+  int maxLen = 0;
+  int sum = 0;
+  for (int i = 0; i < arr.size(); i++) {
+    sum += arr[i];
+
+    if (sum == k) {
+      maxLen = max(maxLen, i + 1);
     }
-    if (currSum == k) {
-      len = max(len, we - ws + 1);
+
+    int rem = sum - k;
+
+    if (preMap.find(rem) != preMap.end()) {
+      int len = i - preMap[rem];
+      maxLen = max(maxLen, len);
+    }
+
+    if (preMap.find(sum) == preMap.end()) {
+      preMap[sum] = i;
     }
   }
-  return len;
+  return maxLen;
 }
 
 int main() {
